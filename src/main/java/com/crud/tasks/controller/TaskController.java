@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
-
+@CrossOrigin(origins = "*")
 @RequestMapping("/v1/task")
 @RestController
 public class TaskController {
