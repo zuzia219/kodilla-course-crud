@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@NoArgsConstructor
+
 @Service
 public class DbService {
     @Autowired
