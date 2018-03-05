@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "Tasks")
 public class Task {
     @Id
