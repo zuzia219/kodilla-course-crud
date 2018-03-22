@@ -17,15 +17,24 @@ public class TrelloController {
     @Autowired
     private TrelloClient trelloClient;
 
+
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
 
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
         List<TrelloBoardDto> resultTrelloBoards = trelloBoards.stream()
-                .filter(s -> s.getId()!=null&&s.getName()!=null&&s.getName().contains("Kodilla"))
+                .filter(s -> s.getId() != null && s.getName() != null && s.getName().contains("Kodilla"))
                 .collect(Collectors.toList());
 
-        resultTrelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+        resultTrelloBoards.forEach(trelloBoardDto -> {
 
+            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
+
+            System.out.println("This board contains lists: ");
+
+            trelloBoardDto.getLists().forEach(trelloList ->
+                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
+
+        });
     }
 }
