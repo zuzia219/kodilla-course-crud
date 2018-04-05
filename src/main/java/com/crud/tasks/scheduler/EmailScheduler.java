@@ -29,7 +29,6 @@ public class EmailScheduler {
         if (size != 1) {
             message += "s";
         }
-
         simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, message, null));
     }
 }
