@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @Component
 public class TrelloValidator {
     private static final Logger LOGGER = LoggerFactory.getLogger(TrelloValidator.class);
@@ -24,8 +26,8 @@ public class TrelloValidator {
     public List<TrelloBoard> validateTrelloBoards(final List<TrelloBoard> trelloBoards) {
         LOGGER.info("Starting filtering boards...");
         List<TrelloBoard> filteredTrelloBoards = trelloBoards.stream()
-                .filter(trelloBoard -> trelloBoard.getName().equalsIgnoreCase("test"))
-                .collect(Collectors.toList());
+                .filter(trelloBoard -> !trelloBoard.getName().equalsIgnoreCase("test"))
+                .collect(toList());
         LOGGER.info("Boards has been filtered. Current list size: " + filteredTrelloBoards.size());
         return filteredTrelloBoards;
     }
