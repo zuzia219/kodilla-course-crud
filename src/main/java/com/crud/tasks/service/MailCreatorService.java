@@ -10,7 +10,7 @@ import org.thymeleaf.context.Context;
 public class MailCreatorService {
 
     @Autowired
-    @Qualifier
+    @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
 
     public String buildTrelloCardEmail(String message) {
