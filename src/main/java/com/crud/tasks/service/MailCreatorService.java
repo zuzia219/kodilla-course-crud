@@ -21,7 +21,11 @@ public class MailCreatorService {
         context.setVariable("message", message);
         context.setVariable("tasks_url", "https://zuzia219.github.io/" );
         context.setVariable("button", "Visit Website");
-        context.setVariable("admin_name", adminConfig.getAdminName() );
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("goodbye_message", "Goodbye! Have a nice day!");
+        context.setVariable("company_name", "${info.company.name}");
+        context.setVariable("company_phone", "${info.company.phone}");
+        context.setVariable("company_email" , "${info.company.email}");
         return templateEngine.process("created-trello-card-mail", context);
     }
 }
