@@ -41,7 +41,7 @@ public class TaskControllerTest {
 
     @Test
     public void testGetTasks() throws Exception {
-
+        //Given
         List<Task> taskList = new ArrayList<>();
         Task task = new Task(1L, "test task", "this is the test task");
         taskList.add(task);
@@ -61,7 +61,7 @@ public class TaskControllerTest {
 
     @Test
     public void testGetTask() throws Exception {
-
+        //Given
         Task task = new Task(1L, "test task", "this is the test task");
         TaskDto taskDto = new TaskDto(1L, "test taskdto", "this is the test taskdto");
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
@@ -76,6 +76,7 @@ public class TaskControllerTest {
 
     @Test
     public void testDeleteTask() throws Exception {
+        //Given
         Task task = new Task(1L, "test task", "this is the test task");
         when(dbService.getTask(task.getId())).thenReturn(Optional.ofNullable(task));
         //When&Then
@@ -85,7 +86,7 @@ public class TaskControllerTest {
 
     @Test
     public void testUpdateTask() throws Exception {
-
+        //Given
         Task task = new Task(1L, "test task", "this is the test task");
         TaskDto taskDto = new TaskDto(1L, "test task", "this is the test task");
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
@@ -104,7 +105,7 @@ public class TaskControllerTest {
 
     @Test
     public void testCreateTask() throws Exception {
-
+        //Given
         Task task = new Task(1L, "test task", "this is the test task");
         TaskDto taskDto = new TaskDto(1L, "test task", "this is the test task");
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
