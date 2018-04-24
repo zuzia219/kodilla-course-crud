@@ -34,8 +34,8 @@ public class MailCreatorService {
 
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("tasks_url", "https://infinite-reef-78397.herokuapp.com/actuator/info");
-        context.setVariable("button", "See the app info");
+        context.setVariable("tasks_url", "https://zuzia219.github.io/");
+        context.setVariable("button", "Visit Website");
         context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("goodbye_message", "Goodbye! Have a nice day!");
         context.setVariable("company_name", companyConfig.getCompanyName());
@@ -56,14 +56,14 @@ public class MailCreatorService {
 
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("tasks_url", "https://zuzia219.github.io/");
-        context.setVariable("button", "Visit Website");
+        context.setVariable("info_url", "https://infinite-reef-78397.herokuapp.com/actuator/info");
+        context.setVariable("button", "See the app info");
         context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("goodbye_message", "Goodbye! Have a nice day!");
         context.setVariable("company_name", companyConfig.getCompanyName());
         context.setVariable("company_phone", companyConfig.getCompanyPhone());
         context.setVariable("company_email", companyConfig.getCompanyMail());
-        context.setVariable("show_button", false);
+        context.setVariable("show_button", true);
         context.setVariable("is_friend", false);
         context.setVariable("admin_config", adminConfig);
         context.setVariable("application_functionality", functionality);

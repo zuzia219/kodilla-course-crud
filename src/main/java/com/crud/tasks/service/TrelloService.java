@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.crud.tasks.service.MailCreatorService.CREATED_TRELLO_CARD;
-import static com.crud.tasks.service.MailCreatorService.SCHEDULED_MAIL;
 
 
 @Service
@@ -34,7 +33,7 @@ public class TrelloService {
 
     public CreatedTrelloCardDto createTrelloCard(final TrelloCardDto trelloCardDto) {
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
-        Optional.ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "New card " + card.getName() + " has been crated on your trello account ", null), SCHEDULED_MAIL));
+        Optional.ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "New card " + card.getName() + " has been crated on your trello account ", null), CREATED_TRELLO_CARD));
         return newCard;
     }
 }
