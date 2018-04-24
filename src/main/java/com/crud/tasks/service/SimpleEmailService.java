@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 @Service
 public class SimpleEmailService {
+
     @Autowired
     private JavaMailSender javaMailSender;
 
@@ -22,10 +23,10 @@ public class SimpleEmailService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleEmailService.class);
 
-    public void send(final Mail mail) {
+    public void send(final Mail mail, String template) {
         LOGGER.info("Starting email preparation");
         try {
-            javaMailSender.send(createMimeMessage(mail));
+            javaMailSender.send(createMimeMessage(mail, template));
             LOGGER.info("Email has been sent");
 
         } catch (MailException e) {
@@ -33,14 +34,15 @@ public class SimpleEmailService {
         }
     }
 
-    private MimeMessagePreparator createMimeMessage(final Mail mail) {
+    private MimeMessagePreparator createMimeMessage(final Mail mail, String template) {
         return mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            messageHelper.setText(mailCreatorService.chooseEmailTemplate(template, mail.getMessage()), true);
         };
     }
+
 
     private SimpleMailMessage createMailMessage(Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();

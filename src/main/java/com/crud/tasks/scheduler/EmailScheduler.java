@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import static com.crud.tasks.service.MailCreatorService.SCHEDULED_MAIL;
+
 @Component
 public class EmailScheduler {
 
@@ -29,6 +31,6 @@ public class EmailScheduler {
         if (size != 1) {
             message += "s";
         }
-        simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, message, null));
+        simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, message, null), SCHEDULED_MAIL);
     }
 }
