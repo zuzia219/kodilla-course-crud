@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import static com.crud.tasks.service.MailCreatorService.CREATED_TRELLO_CARD;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -32,7 +33,7 @@ public class SimpleEmailServiceTest {
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
         //When
-        simpleEmailService.send(mail);
+        simpleEmailService.send(mail, CREATED_TRELLO_CARD);
         //Then
         verify(javaMailSender, times(1)).send(mailMessage);
     }
